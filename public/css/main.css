@@ -18,12 +18,21 @@ body{
 }
 
 .form{
-	width:400px;
+	width:500px;
 	margin-top: 50px;
 	margin-right: auto;
 	margin-left: auto;
 	background-color: white;
 	text-align: center;
+}
+
+.form span{
+	display: inline-block;
+	width:100px;
+}
+
+#library span{
+	width: 230px;
 }
 
 .form_title{
@@ -38,4 +47,9 @@ body{
 .button{
 	padding-top: 10px;
 	padding-bottom: 10px;
+	margin-top: 10px;
+}
+
+.label_title{
+	margin-bottom: 10px;
 }

@@ -8,6 +8,25 @@
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
+	<div id="admin" class="form" style="display: none;">
+		<div id="applyBorrow">
+			<div class="label_title">
+				<span>借书人</span>
+				<span>书名</span>
+				<span>日期</span>
+				<span>是否同意</span>
+			</div>
+		</div>
+		<div id="applyReturn">
+			<div class="label_title">
+				<span>还书人</span>
+				<span>书名</span>
+				<span>日期</span>
+				<span>是否同意</span>
+			</div>
+		</div>
+	</div>
+
 	<div id="main" class="form">
 		<div class="form_title">登陆</div>
 		<div class="form_input">
@@ -31,6 +50,10 @@
 				<input type="text" name="userNameEnroll">
 			</div>
 			<div class="form_input">
+				<span>lenovo邮箱：</span>
+				<input type="text" name="email">
+			</div>
+			<div class="form_input">
 				<span>密码：</span>
 				<input type="password" name="passwordEnroll">
 			</div>
@@ -41,7 +64,27 @@
 			<div class="button">
 				<button id="sure">确认</button>
 			</div>
-		</div>
+	</div>
 
+	<div id="library" class="form" style="display: none;">
+		<div id="available">
+			<div class="label_title">
+				<span>可选</span>
+				<span>书名</span>
+			</div>
+		</div>
+		<div id="borrow">
+			<button id="borrow">确认</button>
+		</div>
+		<div id="inavailable">
+			<div class="label_title">
+				<span>可还</span>
+				<span>书名</span>
+			</div>
+		</div>
+		<div id="resend">
+			<button id="resend">归还</button>
+		</div>
+	</div>
 </body>
 </html>
