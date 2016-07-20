@@ -4,6 +4,46 @@ $(document).ready(function(){
 			var thisUser;
 			var thisAuth;
 
+			function setCookie(c_name,value,expiredays){
+				var exdate=new Date()
+				exdate.setDate(exdate.getDate()+expiredays)
+				document.cookie=c_name+ "=" +escape(value)+
+				((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+			}
+
+			function getCookie(c_name){
+				if (document.cookie.length>0)
+				  {
+				  c_start=document.cookie.indexOf(c_name + "=")
+				  if (c_start!=-1)
+				    { 
+				    c_start=c_start + c_name.length+1 
+				    c_end=document.cookie.indexOf(";",c_start)
+				    if (c_end==-1) c_end=document.cookie.length
+				    return unescape(document.cookie.substring(c_start,c_end))
+				    } 
+				  }
+				return ""
+			}
+
+			function checkCookie(){
+				username=getCookie('library')
+				if (username!=null && username!=""){
+					// alert('Welcome again '+username+'!');
+					thisUser=username.split(',')[0];
+					thisAuth=username.split(',')[1];
+					$('#main').hide();
+					$('#library').show();
+					libraryInit();
+					if(thisAuth == 'admin'){
+							$('#admin').show();
+							adminInit();
+						}
+				}
+			}
+
+			checkCookie();
+
 			$('#login').click(function(){
 				var userName=$('[name=userName]').val();
 				var password=$('[name=password]').val();
@@ -26,6 +66,8 @@ $(document).ready(function(){
 									$('#admin').show();
 									adminInit();
 								}
+								setCookie('library',[thisUser,thisAuth],1);
+
 							} else {
 								alert(data);
 							}
@@ -88,7 +130,7 @@ $(document).ready(function(){
 					success:function(data){
 						for(var i=0;i<data.length;i++){
 							if(data[i].available == 1){
-								var str='<div class="label"><span><input type="checkbox" class="select"></span><span>'+data[i].book+'</span></div>';
+								var str='<div class="ui toggle checkbox label"><input type="checkbox" class="select"><label>'+data[i].book+'</label></div>';
 								$('#available').append(str);
 							}
 						}
@@ -99,7 +141,7 @@ $(document).ready(function(){
 					data:{'user':thisUser},
 					success:function(data){
 						for(var i=0;i<data.length;i++){
-							var str='<div class="label"><span><input type="checkbox" class="reSelect"></span><span>'+data[i].book+'</span></div>';
+							var str='<div class="ui toggle checkbox label"><input type="checkbox" class="reSelect"><label>'+data[i].book+'</label></div>';
 								$('#inavailable').append(str);
 						}
 					}
@@ -237,7 +279,7 @@ $(document).ready(function(){
 				var books=[];
 				if(selected.length>0){
 					selected.each(function(){
-						var book=$(this).parent().next().text();
+						var book=$(this).next().text();
 						books.push(book);
 					});
 				}
@@ -250,7 +292,7 @@ $(document).ready(function(){
 						if(data[0]=='1'){
 							alert('借书成功，请前往9A024取书');
 							selected.each(function(){
-								$(this).parent().parent().hide();
+								$(this).parent().hide();
 							});
 						} else {
 							alert('借书失败，请稍后重试');
@@ -265,7 +307,7 @@ $(document).ready(function(){
 				var books=[];
 				if(selected.length>0){
 					selected.each(function(){
-						var book=$(this).parent().next().text();
+						var book=$(this).next().text();
 						books.push(book);
 					});
 				}
@@ -278,7 +320,7 @@ $(document).ready(function(){
 						if(data[0]=='1'){
 							alert('还书成功，请送完9A024');
 							selected.each(function(){
-								$(this).parent().parent().hide();
+								$(this).parent().hide();
 							});
 						} else {
 							alert('还书失败，请稍后重试');

@@ -3,11 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>library</title>
-	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<link rel="icon" type="image/x-icon" href="/asset/favicon.ico">
+	<script type="text/javascript" src="/js/bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/bower_components/semantic/dist/semantic.min.js"></script>
 	<script type="text/javascript" src="/js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="/js/bower_components/semantic/dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
 <body>
+
+<h2 class="ui center aligned icon header" id="header"><i class="circular users icon"></i> Library </h2>
+
 	<div id="admin" class="form" style="display: none;">
 		<div id="applyBorrow">
 			<div class="label_title">
@@ -27,64 +33,76 @@
 		</div>
 	</div>
 
-	<div id="main" class="form">
-		<div class="form_title">登陆</div>
-		<div class="form_input">
-			<span>用户名：</span>
-			<input type="text" name="userName">
-		</div>
-		<div class="form_input">
-			<span>密码：</span>
-			<input type="password" name="password">
-		</div>
-		<div class="button">
-			<button id="login">登陆</button>
-			<button id="register">注册</button>
-		</div>
-	</div>
+<div class="ui two column middle aligned very relaxed stackable grid" id="main">
+  <div class="column">
+    <div class="ui form">
+      <div class="field">
+        <label>Username</label>
+        <div class="ui left icon input">
+          <input type="text" placeholder="Username" name="userName">
+          <i class="user icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <div class="ui left icon input">
+          <input type="password" name="password">
+          <i class="lock icon"></i>
+        </div>
+      </div>
+      <div class="ui blue submit button" id="login">Login</div>
+    </div>
+  </div>
+  <div class="center aligned column">
+    <div class="ui big green labeled icon button" id="register"><i class="signup icon"></i> Sign Up </div>
+  </div>
+</div>
 
-	<div id="enroll" class="form" style="display: none;">
-			<div class="form_title">注册</div>
-			<div class="form_input">
-				<span>用户名：</span>
-				<input type="text" name="userNameEnroll">
-			</div>
-			<div class="form_input">
-				<span>lenovo邮箱：</span>
-				<input type="text" name="email">
-			</div>
-			<div class="form_input">
-				<span>密码：</span>
-				<input type="password" name="passwordEnroll">
-			</div>
-			<div class="form_input">
-				<span>确认密码：</span>
-				<input type="password" name="rePasswordEnroll">
-			</div>
-			<div class="button">
-				<button id="sure">确认</button>
-			</div>
-	</div>
+<div class="ui one column middle aligned very relaxed stackable grid" id="enroll" style="display: none;">
+  <div class="column">
+    <div class="ui form">
+      <div class="field">
+        <label>Username</label>
+        <div class="ui left icon input">
+          <input type="text" placeholder="Username" name="userNameEnroll">
+          <i class="user icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <label>Lenovo 邮箱</label>
+        <div class="ui left icon input">
+          <input type="text" name="email">
+          <i class="at icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <label>密码</label>
+        <div class="ui left icon input">
+          <input type="password" name="passwordEnroll">
+          <i class="lock icon"></i>
+        </div>
+      </div>
+      <div class="field">
+        <label>确认密码</label>
+        <div class="ui left icon input">
+          <input type="password" name="rePasswordEnroll">
+          <i class="lock icon"></i>
+        </div>
+      </div>
+      <div class="ui blue submit button" id="sure">确认</div>
+    </div>
+  </div>
+</div>
 
-	<div id="library" class="form" style="display: none;">
-		<div id="available">
-			<div class="label_title">
-				<span>可选</span>
-				<span>书名</span>
-			</div>
+	<div id="library" class="ui one column middle aligned very relaxed stackable grid" style="display: none;">
+		<div id="available" class="ui one column middle aligned very relaxed stackable grid">
+			<h1 class="ui sub header">可选图书 </h1>
 		</div>
-		<div id="borrow">
-			<button id="borrow">确认</button>
+		<div id="borrow" class="ui blue submit button one column middle aligned very relaxed stackable grid">确认</div>
+		<div id="inavailable" class="ui one column middle aligned very relaxed stackable grid">
+			<h1 class="ui sub header">可还图书 </h1>
 		</div>
-		<div id="inavailable">
-			<div class="label_title">
-				<span>可还</span>
-				<span>书名</span>
-			</div>
-		</div>
-		<div id="resend">
-			<button id="resend">归还</button>
-		</div>
+		<div id="resend" class="ui blue submit button one column middle aligned very relaxed stackable grid">归还</div>
 	</div>
 </body>
 </html>
